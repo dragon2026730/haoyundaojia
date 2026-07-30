@@ -22,6 +22,8 @@
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="北京好运到家搬家公司｜北京专业搬家服务" />
   <meta name="twitter:description" content="北京全市居民搬家、公司搬迁、长途搬家一站式服务，正规资质、自有车队、透明计价。" />
+  <meta property="og:image" content="https://dragon2026730.github.io/haoyundaojia/images/moving-truck.png" />
+  <meta property="og:image:alt" content="北京好运到家搬家公司搬家车队" />
 
   <style>
     :root {
@@ -107,12 +109,17 @@
     footer.site a { color: #c9cfda; }
     footer.site .row { display: flex; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
     .small { font-size: 13px; color: var(--muted); }
+    .gallery { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
+    .gallery figure { margin: 0; border: 1px solid var(--line); border-radius: 12px; overflow: hidden; background: #fff; }
+    .gallery img { width: 100%; height: auto; display: block; }
+    .gallery figcaption { padding: 10px 14px; font-size: 13px; color: var(--muted); }
 
     @media (max-width: 860px) {
       .grid.cols-3, .grid.cols-2 { grid-template-columns: 1fr; }
       ol.steps { grid-template-columns: repeat(2, 1fr); }
       .hero h1 { font-size: 30px; }
       nav.menu { display: none; }
+      .gallery { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -151,6 +158,24 @@
         <div><strong>7×24小时</strong><span>预约与上门</span></div>
         <div><strong>免费估价</strong><span>上门勘测报价</span></div>
         <div><strong>损坏必赔</strong><span>服务承诺</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 服务场景展示：图廊 + 描述性 alt，利于 AI 图像检索与 GEO -->
+  <section id="gallery" style="background:var(--soft);">
+    <div class="wrap">
+      <h2>服务场景</h2>
+      <p class="sub">好运到家搬家车队与师傅作业品牌示意（建议后续替换为门店/车队实拍图）。</p>
+      <div class="gallery">
+        <figure>
+          <img src="images/moving-truck.png" alt="北京好运到家搬家公司搬家货车与师傅，提供居民搬家、公司搬迁、长途搬家服务" loading="lazy" width="1536" height="1024" />
+          <figcaption>专业搬家车队 · 封闭厢货、自有车辆</figcaption>
+        </figure>
+        <figure>
+          <img src="images/movers-furniture.png" alt="好运到家师傅使用防护垫与搬运带小心搬运家具，保障物品安全" loading="lazy" width="1536" height="1024" />
+          <figcaption>师傅作业现场 · 家具防护搬运、损坏必赔</figcaption>
+        </figure>
       </div>
     </div>
   </section>
@@ -398,7 +423,8 @@
     "居民搬家","公司搬迁","长途搬家","空调拆装","家具拆装","打包收纳","钢琴搬运","临时仓储"
   ],
   "knowsAbout": ["搬家服务","搬迁服务","空调移机","家具拆装"],
-  "slogan": "让每一次搬家都顺顺利利"
+  "slogan": "让每一次搬家都顺顺利利",
+  "image": "https://dragon2026730.github.io/haoyundaojia/images/moving-truck.png"
 }
 </script>
 
@@ -462,6 +488,30 @@
         "@type": "Answer",
         "text": "可拨打服务热线 010-6889 8998（手机 13699248831）进行免费估价与预约，门店地址为北京市昌平区立汤路卢卡新天地，支持微信同号沟通与对公结算。"
       }
+    }
+  ]
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "ImageObject",
+      "name": "北京好运到家搬家公司搬家车队",
+      "description": "好运到家专业搬家货车与师傅，提供北京居民搬家、公司搬迁、长途搬家服务。",
+      "contentUrl": "https://dragon2026730.github.io/haoyundaojia/images/moving-truck.png",
+      "url": "https://dragon2026730.github.io/haoyundaojia/images/moving-truck.png",
+      "about": { "@type": "MovingCompany", "name": "北京好运到家搬家公司" }
+    },
+    {
+      "@type": "ImageObject",
+      "name": "好运到家师傅搬运家具作业现场",
+      "description": "好运到家师傅使用防护垫与搬运带小心搬运家具，保障物品安全，承诺损坏必赔。",
+      "contentUrl": "https://dragon2026730.github.io/haoyundaojia/images/movers-furniture.png",
+      "url": "https://dragon2026730.github.io/haoyundaojia/images/movers-furniture.png",
+      "about": { "@type": "MovingCompany", "name": "北京好运到家搬家公司" }
     }
   ]
 }
