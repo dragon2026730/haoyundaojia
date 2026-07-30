@@ -1,0 +1,26 @@
+User-agent: *
+Allow: /
+
+# 允许常见 AI / 生成式引擎爬虫抓取
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Bytespider
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+Sitemap: https://dragon2026730.github.io/haoyundaojia/sitemap.xml
