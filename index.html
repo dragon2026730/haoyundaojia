@@ -62,13 +62,22 @@
     .cta { background: var(--brand); color: #fff; padding: 9px 18px; border-radius: 8px; font-weight: 700; }
     .cta:hover { background: var(--brand-dark); color:#fff; text-decoration:none; }
 
-    .hero { background: linear-gradient(135deg, #fff 0%, var(--soft) 100%); padding: 56px 0; }
-    .hero h1 { font-size: 38px; line-height: 1.25; margin: 0 0 14px; }
+    .hero { position: relative; min-height: 520px; display: flex; align-items: center; padding: 70px 0 90px; overflow: hidden; }
+    .hero-carousel { position: absolute; inset: 0; z-index: 0; }
+    .carousel-slide { position: absolute; inset: 0; opacity: 0; transition: opacity 1.2s ease-in-out; }
+    .carousel-slide.active { opacity: 1; }
+    .carousel-slide img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .carousel-overlay { position: absolute; inset: 0; background: linear-gradient(90deg, rgba(0,0,0,0.62) 0%, rgba(0,0,0,0.3) 55%, transparent 85%); z-index: 1; }
+    .carousel-dots { position: absolute; bottom: 22px; left: 50%; transform: translateX(-50%); z-index: 2; display: flex; gap: 10px; }
+    .carousel-dots button { width: 10px; height: 10px; border-radius: 50%; border: none; background: rgba(255,255,255,0.45); cursor: pointer; }
+    .carousel-dots button.active { background: #fff; }
+    .hero-content { position: relative; z-index: 2; color: #fff; max-width: 720px; }
+    .hero h1 { font-size: 38px; line-height: 1.25; margin: 0 0 14px; color: #fff; }
     .hero .tag { display: inline-block; background: var(--accent); color: #3a2c00; font-weight: 700; padding: 4px 12px; border-radius: 999px; font-size: 13px; margin-bottom: 16px; }
-    .hero p.lead { font-size: 18px; color: var(--muted); max-width: 720px; }
+    .hero p.lead { font-size: 18px; color: rgba(255,255,255,0.92); max-width: 720px; }
     .hero .stats { display: flex; gap: 36px; margin-top: 28px; flex-wrap: wrap; }
-    .hero .stats div strong { display: block; font-size: 28px; color: var(--brand); }
-    .hero .stats div span { color: var(--muted); font-size: 14px; }
+    .hero .stats div strong { display: block; font-size: 28px; color: #fff; }
+    .hero .stats div span { color: rgba(255,255,255,0.85); font-size: 14px; }
 
     section { padding: 52px 0; border-bottom: 1px solid var(--line); }
     h2 { font-size: 28px; margin: 0 0 8px; }
@@ -117,7 +126,10 @@
     @media (max-width: 860px) {
       .grid.cols-3, .grid.cols-2 { grid-template-columns: 1fr; }
       ol.steps { grid-template-columns: repeat(2, 1fr); }
-      .hero h1 { font-size: 30px; }
+      .hero { min-height: 560px; }
+      .hero h1 { font-size: 28px; }
+      .carousel-overlay { background: rgba(0,0,0,0.55); }
+      .hero-content { max-width: 100%; }
       nav.menu { display: none; }
       .gallery { grid-template-columns: 1fr; }
     }
@@ -142,9 +154,22 @@
 </header>
 
 <main>
-  <!-- 英雄区：核心实体一句话定义，便于 AI 直接抽取 -->
+  <!-- 英雄区：核心实体一句话定义 + 轮播 Banner -->
   <section class="hero" id="top" style="border-bottom:1px solid var(--line);">
-    <div class="wrap">
+    <div class="hero-carousel" aria-label="首页轮播 Banner">
+      <div class="carousel-slide active">
+        <img src="images/banner-1.jpg" alt="专注管家式搬家服务，不负每次信任托付" loading="eager" />
+      </div>
+      <div class="carousel-slide">
+        <img src="images/banner-2.jpg" alt="好运到家搬家，让搬家更加简单" loading="lazy" />
+      </div>
+      <div class="carousel-slide">
+        <img src="images/banner-3.jpg" alt="全程不动手，拎包即入住" loading="lazy" />
+      </div>
+      <div class="carousel-overlay" aria-hidden="true"></div>
+      <div class="carousel-dots" aria-hidden="true"><button class="active" aria-label="第1张"></button><button aria-label="第2张"></button><button aria-label="第3张"></button></div>
+    </div>
+    <div class="wrap hero-content">
       <span class="tag">北京本地 · 正规搬家 · 24小时上门</span>
       <h1>北京好运到家搬家公司——北京全市专业搬家服务提供商</h1>
       <p class="lead">
@@ -152,6 +177,7 @@
         全市均有分部、就近派车，提供7×24小时随叫随到的专业搬家与搬迁服务，坚持透明计价、明码标价、损坏必赔。公司秉承"顾客满意、员工满意、社会满意"的三满意制度。
         门店位于北京市昌平区立汤路卢卡新天地，服务热线 010-68898998。
       </p>
+      <p style="margin-top:10px;"><a class="cta" href="tel:01068898998">立即免费询价：010-68898998</a></p>
       <div class="stats">
         <div><strong>北京全16区</strong><span>覆盖服务区域</span></div>
         <div><strong>7×24小时</strong><span>预约与上门</span></div>
@@ -414,7 +440,23 @@
   </div>
 </footer>
 
-<script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+<script>
+(function(){
+  var slides = document.querySelectorAll('.carousel-slide');
+  var dots = document.querySelectorAll('.carousel-dots button');
+  var idx = 0;
+  function go(n){
+    slides[idx].classList.remove('active');
+    if (dots[idx]) dots[idx].classList.remove('active');
+    idx = (n + slides.length) % slides.length;
+    slides[idx].classList.add('active');
+    if (dots[idx]) dots[idx].classList.add('active');
+  }
+  setInterval(function(){ go(idx + 1); }, 5000);
+  dots.forEach(function(dot, i){ dot.addEventListener('click', function(){ go(i); }); });
+})();
+document.getElementById('year').textContent = new Date().getFullYear();
+</script>
 
 <!--
   GEO 结构化数据：以下 JSON-LD 让 AI 搜索/生成引擎直接抽取"实体 + 服务 + 区域 + 问答"，
@@ -564,6 +606,30 @@
       "description": "好运到家搬家公司官方服务车型价格卡：金杯240元起、敞车800元起、4.2米厢货300元起、6.2米厢货1000元起，均含10公里基础里程，列明超里程费与无电梯楼层费。",
       "contentUrl": "https://dragon2026730.github.io/haoyundaojia/images/price-vehicle-cards.png",
       "url": "https://dragon2026730.github.io/haoyundaojia/images/price-vehicle-cards.png",
+      "about": { "@type": "MovingCompany", "name": "北京好运到家搬家公司" }
+    },
+    {
+      "@type": "ImageObject",
+      "name": "好运到家首页轮播 Banner 图一",
+      "description": "好运到家搬家公司首页轮播 Banner：专注管家式搬家服务，不负每次信任托付。",
+      "contentUrl": "https://dragon2026730.github.io/haoyundaojia/images/banner-1.jpg",
+      "url": "https://dragon2026730.github.io/haoyundaojia/images/banner-1.jpg",
+      "about": { "@type": "MovingCompany", "name": "北京好运到家搬家公司" }
+    },
+    {
+      "@type": "ImageObject",
+      "name": "好运到家首页轮播 Banner 图二",
+      "description": "好运到家搬家公司首页轮播 Banner：好运到家搬家，让搬家更加简单。",
+      "contentUrl": "https://dragon2026730.github.io/haoyundaojia/images/banner-2.jpg",
+      "url": "https://dragon2026730.github.io/haoyundaojia/images/banner-2.jpg",
+      "about": { "@type": "MovingCompany", "name": "北京好运到家搬家公司" }
+    },
+    {
+      "@type": "ImageObject",
+      "name": "好运到家首页轮播 Banner 图三",
+      "description": "好运到家搬家公司首页轮播 Banner：全程不动手，拎包即入住。",
+      "contentUrl": "https://dragon2026730.github.io/haoyundaojia/images/banner-3.jpg",
+      "url": "https://dragon2026730.github.io/haoyundaojia/images/banner-3.jpg",
       "about": { "@type": "MovingCompany", "name": "北京好运到家搬家公司" }
     }
   ]
