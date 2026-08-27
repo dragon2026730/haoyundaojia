@@ -50,11 +50,10 @@
     .wrap { max-width: 1080px; margin: 0 auto; padding: 0 20px; }
     header.site {
       position: sticky; top: 0; z-index: 50;
-      background: var(--brand);
+      background: #fff;
+      border-bottom: 1px solid var(--line);
     }
-    .logo-banner-link { display: block; line-height: 0; }
-    .logo-banner { width: 100%; height: auto; display: block; max-height: 120px; object-fit: contain; background: var(--brand); }
-    .site-nav { background: #fff; border-bottom: 1px solid var(--line); }
+    .site-nav { background: #fff; }
     .site-nav .wrap { display: flex; gap: 22px; align-items: center; min-height: 48px; overflow-x: auto; }
     .site-nav a { color: var(--ink); font-size: 15px; white-space: nowrap; }
     .site-nav a:hover { color: var(--brand); text-decoration: none; }
@@ -138,9 +137,6 @@
 <body>
 
 <header class="site">
-  <a href="/haoyundaojia/" class="logo-banner-link" aria-label="好运到家搬家 首页">
-    <img src="images/logo-banner.jpg" alt="好运到家搬家 GOOD LUCK HOME MOVING 服务热线：010-68898998 / 400-0623-588" class="logo-banner" />
-  </a>
   <nav class="site-nav" aria-label="主导航">
     <div class="wrap">
       <img src="images/service-banner.jpg" alt="好运到家搬家 服务热线：010-68898998 / 4000623588" class="nav-logo" />
