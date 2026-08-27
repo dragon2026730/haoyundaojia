@@ -58,15 +58,12 @@
     .site-nav .wrap { display: flex; gap: 22px; align-items: center; min-height: 48px; overflow-x: auto; }
     .site-nav a { color: var(--ink); font-size: 15px; white-space: nowrap; }
     .site-nav a:hover { color: var(--brand); text-decoration: none; }
+    .nav-logo { height: 34px; width: auto; border-radius: 6px; flex: none; margin-right: 6px; }
     .logo { font-weight: 800; display: inline-flex; align-items: center; font-size: 19px; color: var(--brand); }
     .logo span { color: var(--brand); }
     .logo-mark { width: 20px; height: 20px; flex: none; margin-left: 8px; }
     .cta { background: var(--brand); color: #fff; padding: 9px 18px; border-radius: 8px; font-weight: 700; }
 
-    .services-layout { display: grid; grid-template-columns: 320px 1fr; gap: 28px; align-items: start; }
-    .services-layout .banner-card { position: sticky; top: 88px; border: 1px solid var(--line); border-radius: 12px; overflow: hidden; background: #fff; }
-    .services-layout .banner-card img { width: 100%; height: auto; display: block; }
-    .services-layout .banner-card figcaption { padding: 12px 14px; font-size: 13px; color: var(--muted); text-align: center; }
     .cta:hover { background: var(--brand-dark); color:#fff; text-decoration:none; }
 
     .hero { position: relative; padding: 0; overflow: hidden; }
@@ -135,8 +132,6 @@
       .intro h1 { font-size: 30px; }
       .site-nav .wrap { gap: 16px; }
       .gallery { grid-template-columns: 1fr; }
-      .services-layout { grid-template-columns: 1fr; }
-      .services-layout .banner-card { position: static; }
     }
   </style>
 </head>
@@ -148,6 +143,7 @@
   </a>
   <nav class="site-nav" aria-label="主导航">
     <div class="wrap">
+      <img src="images/service-banner.jpg" alt="好运到家搬家 服务热线：010-68898998 / 4000623588" class="nav-logo" />
       <a href="#services">服务项目</a>
       <a href="#areas">服务区域</a>
       <a href="#process">服务流程</a>
@@ -227,12 +223,7 @@
     <div class="wrap">
       <h2>服务项目</h2>
       <p class="sub">好运到家为北京个人、家庭及企业用户提供以下专业搬家与搬迁服务。</p>
-      <div class="services-layout">
-        <figure class="banner-card">
-          <img src="images/service-banner.jpg" alt="好运到家搬家服务热线：010-68898998 / 4000623588" loading="lazy" />
-          <figcaption>品牌服务热线：010-68898998 / 4000623588</figcaption>
-        </figure>
-        <div class="grid cols-3">
+      <div class="grid cols-3">
           <article class="card">
             <h3>居民搬家</h3>
             <p>面向家庭用户的市内搬家，含家具家电拆装、物品打包、楼层搬运与到位摆放，适合租房换房、购房入住等场景。</p>
@@ -290,7 +281,6 @@
             <p>提供家具、家电、易碎品与贵重物品的专业包装防护，含气泡膜、缠绕膜、木箱定制，搬前包好、搬后归位。</p>
           </article>
         </div>
-      </div>
     </div>
   </section>
 
